@@ -1,1 +1,1 @@
-# denizdincermw-denizdincermw.github.io
+denizdincermw.github.io
