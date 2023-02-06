@@ -6,4 +6,4 @@
 
 <a class="btn btn-outline-success btn-lg " href="pre-menu.html"> Restaurant page </a>
 
-<a class="btn btn-outline-dark btn-lg " href="cv.html"> Portfolio page (for educational purposes)</a>
+<a class="btn btn-outline-dark btn-lg " href="portfolio.html"> Portfolio page (for educational purposes)</a>
