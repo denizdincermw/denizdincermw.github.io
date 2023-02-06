@@ -4,6 +4,6 @@
 
 <a class="btn btn-success btn-lg " href="myindex.html"> Link page (for educational purposes) </a>
 
-<a class="btn btn-outline-success btn-lg " href="menu.html"> Menu page </a>
+<a class="btn btn-outline-success btn-lg " href="pre-menu.html"> Restaurant page </a>
 
 <a class="btn btn-outline-dark btn-lg " href="cv.html"> Portfolio page (for educational purposes)</a>
