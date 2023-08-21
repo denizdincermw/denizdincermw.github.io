@@ -8,44 +8,59 @@
 </head>
 <body>
     <h2 id="rndNum"></h2> 
-    <div class="row">
+    <div class="row text-center">
         <div class="col">
+            <p>This box is for min number</p>
+            <input type="number" id="minNum">
+        <br>           
+        </div>
+
+        <div class="col">            
             <p>This box is for max number</p>
             <input type="number" id="maxNum">
-        <br>
-            <input type="button" onclick="getRndNum()" value="Submit">
             <br>
+        </div>
+
+        <div class="">        
+            <button id="sBtn" class="btn btn-outline-success m-5" onclick="getRndNum()" >Submit</button>
         </div>
 
         <div class="col">
             <p>This box is for guess</p>
             <input type="number" id="guessedNum">
-        <br>
-            <input type="button" onclick="guessTheNum()" value="Guess">
+            <br>
+            <button id="gBtn" class="btn btn-outline-success mt-2" onclick="guessTheNum()">Guess</button>
             <br>
         </div>
         
     
-     <h2 id="responseMsg"></h2>
-    <a class="btn btn-outline-primary mt-4" href="index.html">Jumps in to the index page</a>
+        <h2 class="mt-4" id="responseMsg"></h2>
+    
     </div>    
     
 
     <script> 
         var rndNum ;
-        var responseMsgElmnt = document.getElementById("responseMsg");
-        function getRndNum() {
+        var responseMsgElmnt = document.getElementById("responseMsg");  
+        var remainingGuess;     
+        
+        async function getRndNum() {
 
-            try{
-                var maxNumElmnt = parseInt(document.getElementById("maxNum").value);
-                if(isNaN(maxNumElmnt)){
-                    responseMsgElmnt.textContent="Enter an integer please";
+            var minNumVal = parseInt(document.getElementById("minNum").value);
+            var maxNumVal = parseInt(document.getElementById("maxNum").value);
+
+            try{            
+                
+                if(isNaN(minNumVal) || isNaN(maxNumVal)){
+                    responseMsgElmnt.textContent="Enter an integer please";                    
                 }
                 else{
                     responseMsgElmnt.textContent="";
                     var rndNumElmnt = document.getElementById("rndNum");
-                    rndNum = Math.floor(Math.random() * maxNumElmnt) + 1;
-                    
+                    rndNum = Math.floor(Math.random() * (maxNumVal - minNumVal + 1)) + minNumVal;                    
+                    remainingGuess = Math.round((maxNumVal-minNumVal)/3 ) ;
+                    responseMsgElmnt.textContent="You can guess "+remainingGuess+" time/s";
+                    console.log(rndNum);
                 }
             }
             catch(error){
@@ -54,38 +69,31 @@
             
         }
 
-        function guessTheNum(){
+        let i;
 
-            
-            try{
-                var guessedNumElmnt = parseInt(document.getElementById("guessedNum").value);
-                if(isNaN(guessedNumElmnt)){
-                    responseMsgElmnt.textContent="Enter an integer please";
-                }
-                else{
+        function guessTheNum() {
+    var guessedNumElmnt = parseInt(document.getElementById("guessedNum").value);
 
-                    responseMsgElmnt.textContent="";
+    if (isNaN(guessedNumElmnt)) {
+        responseMsgElmnt.textContent = "Enter an integer please";
+    } else {
+        if (remainingGuess > 0) {
+            responseMsgElmnt.textContent = "";
 
-                    if(guessedNumElmnt > rndNum ){
-                     responseMsgElmnt.textContent="Your number is higher than random number";
-                    }
-                    else if (guessedNumElmnt < rndNum){
-                    responseMsgElmnt.textContent = "Your number is lower than random number";
-                    }
-                    else if(guessedNumElmnt == rndNum){
-                    responseMsgElmnt.textContent = " u win";
-                    }
-
-                                        
-                }
+            if (guessedNumElmnt > rndNum) {
+                responseMsgElmnt.textContent = "Your number is higher than random number. Remaining guesses: " + remainingGuess;
+            } else if (guessedNumElmnt < rndNum) {
+                responseMsgElmnt.textContent = "Your number is lower than random number. Remaining guesses: " + remainingGuess;
+            } else if (guessedNumElmnt === rndNum) {
+                responseMsgElmnt.textContent = "Congratulations! You win.";
             }
-            catch(error){
-                console.log(error);
-            }
-            
 
-            
+            remainingGuess--; 
+        } else {
+            responseMsgElmnt.textContent = "Sorry, game over. The random number was " + rndNum;
         }
+    }
+}
 
     </script>
 </body>
