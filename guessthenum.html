@@ -57,8 +57,8 @@
                     responseMsgElmnt.textContent="";
                     var rndNumElmnt = document.getElementById("rndNum");
                     rndNum = Math.floor(Math.random() * (maxNumVal - minNumVal + 1)) + minNumVal;                    
-                    remainingGuess = Math.round((maxNumVal-minNumVal)/3 ) ;
-                    responseMsgElmnt.textContent="You can guess "+remainingGuess+" time/s";
+                    remainingGuess = Math.round((maxNumVal-minNumVal)/3 )-1 ;
+                    responseMsgElmnt.textContent="You can guess "+ (remainingGuess + 1) +" time/s";
                     console.log(rndNum);
                 }
             }
@@ -81,7 +81,7 @@
             if (guessedNumElmnt > rndNum) {
                 responseMsgElmnt.textContent = "Your number is higher than random number. Remaining guesses: " + remainingGuess;
             } else if (guessedNumElmnt < rndNum) {
-                responseMsgElmnt.textContent = "Your number is lower than random number. Remaining guesses: " + remainingGuess;
+                responseMsgElmnt.textContent = "Your number is lower than random number. Remaining guesses: " + remainingGuess ;
             } else if (guessedNumElmnt === rndNum) {
                 responseMsgElmnt.textContent = "Congratulations! You win.";
             }
