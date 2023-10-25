@@ -57,7 +57,7 @@
                     responseMsgElmnt.textContent="";
                     var rndNumElmnt = document.getElementById("rndNum");
                     rndNum = Math.floor(Math.random() * (maxNumVal - minNumVal + 1)) + minNumVal;                    
-                    remainingGuess = Math.round((maxNumVal-minNumVal)/3 )-1 ;
+                    remainingGuess = Math.round((maxNumVal-minNumVal)/3 ) ;
                     responseMsgElmnt.textContent="You can guess "+ (remainingGuess + 1) +" time/s";
                     console.log(rndNum);
                 }
